@@ -38,8 +38,6 @@ enum ActionType //The actions supported (you can add more if needed)
 	PASTE,			//pasting copied/cut figure(s)
 	UNDO,			//undo action
 	REDO,			//redo action
-	SEND_BACK,		//sending a figure(s) to the back of other figure(s)
-	SEND_FRONT,		//sending a figure(s) to the front of other figure(s)
 	///
 };
 
