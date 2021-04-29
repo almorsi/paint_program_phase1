@@ -28,17 +28,9 @@ enum ActionType //The actions supported (you can add more if needed)
 	EMPTY,			//A click on empty place in the toolbar
 
 	TO_DRAW,		//Switch interface to Draw mode
-	TO_PLAY,			//Switch interface to Play mode
+	TO_PLAY			//Switch interface to Play mode
 
 	///TODO: Add more action types (if needed)
-	ZOOM_IN,		//zooming the whole graph in
-	ZOOM_OUT,		//zooming the whole graph out
-	COPY,			//copying a figure(s)
-	CUT,			//cutting a figure(s)
-	PASTE,			//pasting copied/cut figure(s)
-	UNDO,			//undo action
-	REDO,			//redo action
-	///
 };
 
 struct Point	//To be used for figures points
@@ -50,6 +42,7 @@ struct GfxInfo	//Graphical info of each figure (you may add more members)
 	color FillClr;	//Fill color of the figure
 	bool isFilled;	//Figure Filled or not
 	int BorderWdth;	//Width of figure borders
+
 };
 
 #endif
