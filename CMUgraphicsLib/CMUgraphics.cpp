@@ -12,6 +12,8 @@ This file was last modified on 05.16.1999
 #include "error.h"
 #include "windowinput.h"
 
+#include "../resource.h"
+
 // Keeps track of key and mouse input and redirects it to the
 // appropriate window object
 windowinput* wipInput = NULL;
@@ -208,7 +210,7 @@ hInstance(GetModuleHandle(0)), iWindowWidth(iWindWidth), iWindowHeight(iWindHeig
 	wndcWindow.cbClsExtra = 0;
 	wndcWindow.cbWndExtra = 0;
 	wndcWindow.hInstance = hInstance;
-	wndcWindow.hIcon = NULL;
+	wndcWindow.hIcon = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_MYICON1));
 	wndcWindow.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndcWindow.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	wndcWindow.lpszMenuName = NULL;
