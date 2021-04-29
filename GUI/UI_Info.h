@@ -34,7 +34,7 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	//If you want to change the menu items order, change the order here
 	
 	//TODO: Add more items names here
-
+	temp, // just for now to eleminate the error
 	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
 };
