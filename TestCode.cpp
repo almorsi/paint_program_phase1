@@ -206,7 +206,7 @@ int main()
 	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	
-	pOut->PrintMessage("Testing Input ability to read strings please type any thing you want");
+	pOut->PrintMessage("Testing Input ability to read strings please type any thing you want then press Return");
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
