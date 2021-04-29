@@ -206,13 +206,16 @@ int main()
 	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	
-	pOut->PrintMessage("Testing Input ability to read strings");
+	pOut->PrintMessage("Testing Input ability to read strings please type any thing you want");
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
 	// 2- After reading the stirng clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
-
+	
+	std::string in_string = pIn->GetString(pOut);
+	pOut->ClearStatusBar();
+	pOut->PrintMessage(std::string("You Entered: " + in_string));
 
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
