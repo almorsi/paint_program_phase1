@@ -210,7 +210,7 @@ hInstance(GetModuleHandle(0)), iWindowWidth(iWindWidth), iWindowHeight(iWindHeig
 	wndcWindow.cbClsExtra = 0;
 	wndcWindow.cbWndExtra = 0;
 	wndcWindow.hInstance = hInstance;
-	wndcWindow.hIcon = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_MYICON1));
+	wndcWindow.hIcon = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_MYICON4));
 	wndcWindow.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndcWindow.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	wndcWindow.lpszMenuName = NULL;

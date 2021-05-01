@@ -4,6 +4,8 @@
 
 IDI_MYICON1 ICON "main_win.ico"
 IDI_MYICON2 ICON "main_win2.ico"
+IDI_MYICON3 ICON "min_win3.ico"
+IDI_MYICON4 ICON "min_win4.ico"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////

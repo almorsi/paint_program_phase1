@@ -210,6 +210,12 @@
     <Image Include="main_win2.ico">
       <Filter>resources</Filter>
     </Image>
+    <Image Include="min_win3.ico">
+      <Filter>resources</Filter>
+    </Image>
+    <Image Include="min_win4.ico">
+      <Filter>resources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">

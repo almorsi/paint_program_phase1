@@ -4,6 +4,8 @@
 
 #define IDI_MYICON1 101
 #define IDI_MYICON2 102
+#define IDI_MYICON3 103
+#define IDI_MYICON4 104
 
 // Next default values for new objects
 // 
