@@ -14,8 +14,8 @@ Output::Output()
 
 	UI.width	= UI.MaxNumberItems*UI.MenuItemWidth + UI.FreeSpaceInToolBar*UI.MenuItemWidth;
 	UI.height	= UI.MenuItemHeight*UI.MaxNumberItems - UI.FreeSpaceInToolBar * UI.MenuItemWidth;
-	UI.wx		= 50;
-	UI.wy		=50;
+	UI.wx		= 200;//the window x position relative to the screen
+	UI.wy		= 150;//the window y position relative to the screen
 
 	
 	UI.StatusBarHeight	= UI.MenuItemHeight + UI.MenuItemPadding;
@@ -81,11 +81,12 @@ void Output::ClearStatusBar() const
 
 	//Draw a line above the status bar
 	pWind->SetPen(BLACK, UI.MenuItemPadding);
-	pWind->DrawLine(0, UI.height - UI.MenuItemHeight,
-		UI.width, UI.height - UI.MenuItemHeight);
+	pWind->DrawLine(0, UI.height - UI.StatusBarHeight,
+		UI.width, UI.height - UI.StatusBarHeight);
 }
 void Output::ClearToolBar() const
 {
+	//Clear Status bar by drawing a filled white rectangle
 	pWind->SetPen(UI.ToolBarColor, 1);
 	pWind->SetBrush(UI.ToolBarColor);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
@@ -93,8 +94,8 @@ void Output::ClearToolBar() const
 
 	//Draw a line under the toolbar
 	pWind->SetPen(BLACK, UI.MenuItemPadding);
-	pWind->DrawLine(0, UI.ToolBarHeight - UI.MenuItemPadding,
-		UI.width, UI.ToolBarHeight - UI.MenuItemPadding);
+	pWind->DrawLine(0, UI.ToolBarHeight - UI.MenuItemPadding + 1,
+		UI.width, UI.ToolBarHeight - UI.MenuItemPadding + 1);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar(int which_is_hi) const
