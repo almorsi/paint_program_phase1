@@ -9,11 +9,13 @@ Input::Input(window* pW)
 
 void Input::GetPointClicked(int& x, int& y) const
 {
+	pWind->FlushMouseQueue();
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
 string Input::GetString(Output* pO) const
 {
+	pWind->FlushKeyQueue();
 	string Label;
 	char Key;
 	while (1)
@@ -50,6 +52,7 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
+			case ITM_TO_PLAY: return TO_PLAY;
 			case ITM_LINE: return DRAW_LINE;
 			case ITM_RECT: return DRAW_RECT;
 			case ITM_TRI: return DRAW_TRI;
@@ -90,6 +93,7 @@ ActionType Input::GetUserAction() const
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
 			switch (ClickedItemOrder)
 			{
+			case ITM_TO_DRAW: return TO_DRAW;
 			case ITM_SHAPE_ONLY: return SHAPE_ONLY;
 			case ITM_CLR_ONLY: return CLR_ONLY;
 			case ITM_SHAPE_N_CLR: return SHAPE_N_CLR;
