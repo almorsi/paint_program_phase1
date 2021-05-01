@@ -10,6 +10,9 @@
     <Filter Include="GUI Classes">
       <UniqueIdentifier>{03fd4e0d-92e0-4271-bb9b-d6e9f21ec35f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{c62a36d3-396a-41d8-b8cc-d4e013395a17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
@@ -196,5 +199,27 @@
       <Filter>GUI Classes</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="resource.h">
+      <Filter>resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="main_win.ico">
+      <Filter>resources</Filter>
+    </Image>
+    <Image Include="main_win2.ico">
+      <Filter>resources</Filter>
+    </Image>
+    <Image Include="min_win3.ico">
+      <Filter>resources</Filter>
+    </Image>
+    <Image Include="min_win4.ico">
+      <Filter>resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc">
+      <Filter>resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
