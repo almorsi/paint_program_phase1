@@ -36,7 +36,7 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
-	Point P1, P2;
+	Point P1, P2, P3;
 
 	/// 2.1- Rectangle Test ///
 	/// =================== 
@@ -88,6 +88,20 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///TODO: Add code to draw Line, Normal and Highlighted
+	// 2.2.1 - Drawing normal non-filled Line
+	pOut->PrintMessage("Drawing a Line ==> non-filled,  Click two points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+
+	gfxInfo.BorderWdth = 3;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->DrawLine(P1, P2, gfxInfo, false);
+
+	// 2.2.2 - Drawing highlighted non-filled Line
+	pOut->PrintMessage("Drawing a Line ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawLine(P1, P2, gfxInfo, true);
 
 	pOut->PrintMessage("Drawing a Line Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -100,6 +114,42 @@ int main()
 
 	///TODO: Add code to draw Triangle in all possible states
 
+	// 2.3.1 - Drawing non-filled Triangle
+	pOut->PrintMessage("Drawing a Trinagle ==> non-filled,  Click Three points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+
+	gfxInfo.BorderWdth = 3;
+	gfxInfo.DrawClr = ORANGE;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false);
+
+	// 2.1.2 - Drawing highlighted non-filled rectangle
+	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
+
+
+	// 2.1.3 - Drawing a filled rectangle
+	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click Three points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+
+	gfxInfo.BorderWdth = 4;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false);
+
+
+	// 2.1.4 - Drawing a highlighted filled rectangle
+	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
+
+
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
@@ -110,6 +160,39 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///TODO: Add code to draw Circle in all possible states
+
+	// 2.4.1 - Drawing non-filled circle
+	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click on the Center");
+	pIn->GetPointClicked(P1.x, P1.y);
+	const int def_radius = 40;
+
+	gfxInfo.BorderWdth = 3;
+	gfxInfo.DrawClr = YELLOW;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->DrawCircle(P1, def_radius, gfxInfo, false);
+
+	// 2.4.2 - Drawing highlighted non-filled circle
+	pOut->PrintMessage("Drawing a Circle ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawCircle(P1, def_radius, gfxInfo, true);
+
+
+	// 2.4.3 - Drawing a filled circle
+	pOut->PrintMessage("Drawing a Circle ==> filled,  Click on the Center");
+	pIn->GetPointClicked(P1.x, P1.y);
+
+	gfxInfo.BorderWdth = 4;
+	gfxInfo.DrawClr = GREEN;	//any color for border
+	gfxInfo.FillClr = BLACK;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->DrawCircle(P1, def_radius, gfxInfo, false);
+
+
+	// 2.4.4 - Drawing a highlighted filled circle
+	pOut->PrintMessage("Drawing a Circle ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawCircle(P1, def_radius, gfxInfo, true);
+
 
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -123,13 +206,16 @@ int main()
 	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	pOut->PrintMessage("Testing Input ability to read strings");
+	pOut->PrintMessage("Testing Input ability to read strings please type any thing you want then press Return");
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
 	// 2- After reading the stirng clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 
+	std::string in_string = pIn->GetString(pOut);
+	pOut->ClearStatusBar();
+	pOut->PrintMessage(std::string("You Entered: " + in_string));
 
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
@@ -153,70 +239,92 @@ int main()
 		{
 		case DRAW_RECT:
 			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
+			pOut->CreateDrawToolBar(ITM_RECT);
 			break;
 
 		case DRAW_LINE:
 			pOut->PrintMessage("Action: Draw a Line , Click anywhere");
+			pOut->CreateDrawToolBar(ITM_LINE);
 			break;
 
 		case DRAW_CIRC:
 			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
+			pOut->CreateDrawToolBar(ITM_CIRC);
 			break;
 
 		case DRAW_TRI:
 			pOut->PrintMessage("Action: Draw a Triangle , Click anywhere");
+			pOut->CreateDrawToolBar(ITM_TRI);
 			break;
 
 		case CHNG_DRAW_CLR:
 			pOut->PrintMessage("Action: Change the drawing color , Click anywhere");
+			pOut->CreateDrawToolBar(ITM_DRAW_CLR);
 			break;
 
 		case CHNG_FILL_CLR:
 			pOut->PrintMessage("Action: Change fill color , Click anywhere");
+			pOut->CreateDrawToolBar(ITM_FILL_CLR);
 			break;
 
 		case CHNG_BK_CLR:
 			pOut->PrintMessage("Action: Chang background color, click anywhere");
+			pOut->CreateDrawToolBar(ITM_BK_CLR);
 			break;
 
 		case SELECT:
 			pOut->PrintMessage("Action: Select shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_SELECT);
+			break;
+
+		case MOVE:
+			pOut->PrintMessage("Action: MOVE shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_MOVE);
 			break;
 
 		case DEL:
 			pOut->PrintMessage("Action: Delete shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_DEL);
 			break;
 
 		case RESIZE:
 			pOut->PrintMessage("Action: Resize shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_RESIZE);
 			break;
 
 		case ROTATE:
 			pOut->PrintMessage("Action: Rotate a shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_ROTATE);
 			break;
 
 		case SEND_BACK:
 			pOut->PrintMessage("Action: send back shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_SEND_BACK);
 			break;
 
 		case BRNG_FRNT:
 			pOut->PrintMessage("Action: bring forward shape, click anywhere");
+			pOut->CreateDrawToolBar(ITM_BRNG_FRNT);
 			break;
 
 		case SAVE:
 			pOut->PrintMessage("Action: Saving data...");
+			pOut->CreateDrawToolBar(ITM_SAVE);
 			break;
 
 		case LOAD:
 			pOut->PrintMessage("Action: Loading data...");
+			pOut->CreateDrawToolBar(ITM_LOAD);
 			break;
 
 		case REDO:
 			pOut->PrintMessage("Action: redo previous action...");
+			pOut->CreateDrawToolBar(ITM_REDO);
 			break;
 
 		case UNDO:
 			pOut->PrintMessage("Action: undo previous action");
+			pOut->CreateDrawToolBar(ITM_UNDO);
 			break;
 
 		case STATUS:
@@ -257,6 +365,7 @@ int main()
 			pOut->CreatePlayToolBar();
 			break;
 		case EXIT:
+			pOut->CreateDrawToolBar(ITM_EXIT);
 			break;
 		}
 	} while (ActType != EXIT);
