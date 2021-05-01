@@ -14,6 +14,8 @@ private:
 	void setDrawToolBarImagesPath(); 
 	void setPlayToolBarImagesPath();
 
+
+
 public:
 	Output();		
 
@@ -24,6 +26,7 @@ public:
 
 	Input* CreateInput() const; //creates a pointer to the Input object	
 	void ClearStatusBar() const;	//Clears the status bar
+	void ClearToolBar() const;	//Clears the Tool bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	
 	// -- Figures Drawing functions

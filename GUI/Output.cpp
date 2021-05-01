@@ -18,7 +18,7 @@ Output::Output()
 	UI.wy		=50;
 
 	
-	UI.StatusBarHeight	= 50;
+	UI.StatusBarHeight	= UI.MenuItemHeight + UI.MenuItemPadding;
 	UI.ToolBarHeight	= UI.MenuItemHeight + 2 * UI.MenuItemPadding;
 	
 	UI.ToolBarColor		= color(250, 255, 204);
@@ -64,10 +64,7 @@ window* Output::CreateWind(int w, int h, int x, int y) const
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateStatusBar() const
 {
-
-	//Draw a line above the toolbar
-	pWind->SetPen(BLACK, UI.MenuItemPadding);
-	pWind->DrawLine(0, UI.height - UI.StatusBarHeight - UI.MenuItemPadding, UI.width, UI.height - UI.StatusBarHeight - UI.MenuItemPadding);
+	ClearStatusBar();
 
 	pWind->SetPen(UI.StatusBarColor, 1);
 	pWind->SetBrush(UI.StatusBarColor);
@@ -76,10 +73,28 @@ void Output::CreateStatusBar() const
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar() const
 {
+
 	//Clear Status bar by drawing a filled white rectangle
 	pWind->SetPen(UI.StatusBarColor, 1);
 	pWind->SetBrush(UI.StatusBarColor);
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
+
+	//Draw a line above the status bar
+	pWind->SetPen(BLACK, UI.MenuItemPadding);
+	pWind->DrawLine(0, UI.height - UI.MenuItemHeight,
+		UI.width, UI.height - UI.MenuItemHeight);
+}
+void Output::ClearToolBar() const
+{
+	pWind->SetPen(UI.ToolBarColor, 1);
+	pWind->SetBrush(UI.ToolBarColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(BLACK, UI.MenuItemPadding);
+	pWind->DrawLine(0, UI.ToolBarHeight - UI.MenuItemPadding,
+		UI.width, UI.ToolBarHeight - UI.MenuItemPadding);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar(int which_is_hi) const
@@ -88,10 +103,7 @@ void Output::CreateDrawToolBar(int which_is_hi) const
 
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
-	
-	pWind->SetPen(UI.ToolBarColor, 1);
-	pWind->SetBrush(UI.ToolBarColor);
-	pWind->DrawRectangle(0, 0,UI.width,UI.ToolBarHeight);
+	ClearToolBar();
 
 	//First prepare List of images for each menu item
 	//To control the order of these images in the menu, 
@@ -106,17 +118,18 @@ void Output::CreateDrawToolBar(int which_is_hi) const
 	for (int i = 0; i < DRAW_ITM_COUNT; i++)
 	{
 		if(i == which_is_hi)
-			pWind->DrawImage(DrawToolBarImagesHi[i], i*UI.MenuItemWidth,0,UI.MenuItemWidth, UI.ToolBarHeight);
-		else
-			pWind->DrawImage(DrawToolBarImagesNorm[i], i*UI.MenuItemWidth,0,UI.MenuItemWidth, UI.ToolBarHeight);
+			pWind->DrawImage(DrawToolBarImagesHi[i], i*UI.MenuItemWidth,0
+				,UI.MenuItemWidth,   UI.MenuItemHeight);
+		else																					 
+			pWind->DrawImage(DrawToolBarImagesNorm[i], i*UI.MenuItemWidth,0
+				,UI.MenuItemWidth, UI.MenuItemHeight);
 
 	}
 
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(BLACK, UI.MenuItemPadding);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+	// I implented is the clear tool bar function
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -125,15 +138,12 @@ void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
-
+	ClearToolBar();
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
-		pWind->DrawImage(PlayToolBarImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(PlayToolBarImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.MenuItemHeight);
 
-	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -310,7 +320,7 @@ void Output::setPlayToolBarImagesPath()
 	PlayToolBarImages[ITM_TO_DRAW		] = "images\\play-tool-bar-minue-items\\NORM\\to_draw.jpg";
 	PlayToolBarImages[ITM_SHAPE_ONLY	] = "images\\play-tool-bar-minue-items\\NORM\\ITM_SHAPE_ONLY.jpg";
 	PlayToolBarImages[ITM_CLR_ONLY		] = "images\\play-tool-bar-minue-items\\NORM\\ITM_CLR_ONLY.jpg";
-	PlayToolBarImages[ITM_SHAPE_N_CLR	] = "images\\play-tool-bar-minue-items\\NORM\\ITM_SHPAE_N_CLR.jpg";
+	PlayToolBarImages[ITM_SHAPE_N_CLR	] = "images\\play-tool-bar-minue-items\\NORM\\ITM_SHAPE_N_CLR.jpg";
 	PlayToolBarImages[ITM_AREA			] = "images\\play-tool-bar-minue-items\\NORM\\ITM_AREA.jpg";
 }
 
