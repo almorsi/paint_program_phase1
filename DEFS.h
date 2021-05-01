@@ -13,6 +13,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color
+	SELECT,         //Selects figure(s)
 	DEL,			//Delete a figure(s)
 	MOVE,			//Move a figure(s)
 	RESIZE,			//Resize a figure(s)
@@ -21,12 +22,18 @@ enum ActionType //The actions supported (you can add more if needed)
 	BRNG_FRNT,		//Bring a figure to the front of all figures
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
+	REDO,           //Undo action
+	UNDO,           //Redo action
 	EXIT,			//Exit the application
 
 	DRAWING_AREA,	//A click on the drawing area
 	STATUS,			//A click on the status bar
 	EMPTY,			//A click on empty place in the toolbar
 
+	SHAPE_ONLY,     //Choose shape only in the play mode
+	CLR_ONLY,       //Choose color only in the play mode
+	SHAPE_N_CLR,    //Choose shape and color in the play mode
+	AREA,           //Choose area in the play mode
 	TO_DRAW,		//Switch interface to Draw mode
 	TO_PLAY			//Switch interface to Play mode
 
@@ -34,7 +41,9 @@ enum ActionType //The actions supported (you can add more if needed)
 };
 
 struct Point	//To be used for figures points
-{ int x,y; };
+{
+	int x, y;
+};
 
 struct GfxInfo	//Graphical info of each figure (you may add more members)
 {

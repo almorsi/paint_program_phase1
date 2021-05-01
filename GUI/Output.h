@@ -6,18 +6,19 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
-	
-	void setDrawToolBarImagesPath(std::string paths[]) const; 
-	//the funcion is const to be compatable with the const function CreaterawToolBar 
-	//but it will not take a data member at all
-	void setPlayToolBarImagesPath(std::string paths[]) const; 
-	//same as the above function but for play mode
+
+	std::string DrawToolBarImagesNorm[DRAW_ITM_COUNT];
+	std::string DrawToolBarImagesHi[DRAW_ITM_COUNT];
+	std::string PlayToolBarImages[PLAY_ITM_COUNT];
+
+	void setDrawToolBarImagesPath(); 
+	void setPlayToolBarImagesPath();
 
 public:
 	Output();		
 
 	window* CreateWind(int, int, int , int) const; //creates the application window
-	void CreateDrawToolBar() const;	//creates Draw mode toolbar & menu
+	void CreateDrawToolBar(int which_is_hi = -1) const;	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 
