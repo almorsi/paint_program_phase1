@@ -74,7 +74,7 @@ void Output::CreateStatusBar() const
 void Output::ClearStatusBar() const
 {
 
-	//Clear Status bar by drawing a filled white rectangle
+	//Clear Status bar by drawing a filled rectangle
 	pWind->SetPen(UI.StatusBarColor, 1);
 	pWind->SetBrush(UI.StatusBarColor);
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
@@ -86,7 +86,7 @@ void Output::ClearStatusBar() const
 }
 void Output::ClearToolBar() const
 {
-	//Clear Status bar by drawing a filled white rectangle
+	//Clear Status bar by drawing a filled rectangle
 	pWind->SetPen(UI.ToolBarColor, 1);
 	pWind->SetBrush(UI.ToolBarColor);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
@@ -95,27 +95,15 @@ void Output::ClearToolBar() const
 	//Draw a line under the toolbar
 	pWind->SetPen(BLACK, UI.MenuItemPadding);
 	pWind->DrawLine(0, UI.ToolBarHeight - UI.MenuItemPadding + 1,
-		UI.width, UI.ToolBarHeight - UI.MenuItemPadding + 1);
+		UI.width, UI.ToolBarHeight - UI.MenuItemPadding + 1); //this +1 is because the x coord begins with zero
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar(int which_is_hi) const
 {
 	UI.InterfaceMode = MODE_DRAW;
 
-	//You can draw the tool bar icons in any way you want.
-	//Below is one possible way
 	ClearToolBar();
 
-	//First prepare List of images for each menu item
-	//To control the order of these images in the menu, 
-	//reoder them in UI_Info.h ==> enum DrawMenuItem
-
-	
-
-	//TODO: Prepare images for each menu item and add it to the list
-	//I added member function to do that
-
-	//Draw menu item one image at a time
 	for (int i = 0; i < DRAW_ITM_COUNT; i++)
 	{
 		if(i == which_is_hi)
@@ -124,13 +112,9 @@ void Output::CreateDrawToolBar(int which_is_hi) const
 		else																					 
 			pWind->DrawImage(DrawToolBarImagesNorm[i], i*UI.MenuItemWidth,0
 				,UI.MenuItemWidth, UI.MenuItemHeight);
-
 	}
 
 
-
-	//Draw a line under the toolbar
-	// I implented is the clear tool bar function
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -138,10 +122,9 @@ void Output::CreateDrawToolBar(int which_is_hi) const
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+
 	ClearToolBar();
 
-	//Draw menu item one image at a time
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(PlayToolBarImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.MenuItemHeight);
 
