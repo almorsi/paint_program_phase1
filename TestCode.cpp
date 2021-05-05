@@ -227,7 +227,7 @@ int main()
 	pOut->PrintMessage("TEST4: Testing Input ability to detect User Action, click anywhere");
 
 	ActionType ActType;
-
+	ActionType PrevActType = EMPTY;
 	///TODO:  
 	//You must add a case for each action (both Draw mode and Play mode actions)
 	//Add cases for the missing actions below
@@ -239,92 +239,254 @@ int main()
 		{
 		case DRAW_RECT:
 			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
-			pOut->CreateDrawToolBar(ITM_RECT);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_RECT);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;//this is necessary because the user might be click on the same icon twice, in this case the item should be hilighted again
+			}
 			break;
 
 		case DRAW_LINE:
-			pOut->PrintMessage("Action: Draw a Line , Click anywhere");
-			pOut->CreateDrawToolBar(ITM_LINE);
+			pOut->PrintMessage("Action: Draw a Line , Click anywhere");	
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_LINE);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case DRAW_CIRC:
 			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
-			pOut->CreateDrawToolBar(ITM_CIRC);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_CIRC);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case DRAW_TRI:
 			pOut->PrintMessage("Action: Draw a Triangle , Click anywhere");
-			pOut->CreateDrawToolBar(ITM_TRI);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_TRI);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case CHNG_DRAW_CLR:
 			pOut->PrintMessage("Action: Change the drawing color , Click anywhere");
-			pOut->CreateDrawToolBar(ITM_DRAW_CLR);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_DRAW_CLR);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case CHNG_FILL_CLR:
 			pOut->PrintMessage("Action: Change fill color , Click anywhere");
-			pOut->CreateDrawToolBar(ITM_FILL_CLR);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_FILL_CLR);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case CHNG_BK_CLR:
 			pOut->PrintMessage("Action: Chang background color, click anywhere");
-			pOut->CreateDrawToolBar(ITM_BK_CLR);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_BK_CLR);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case SELECT:
 			pOut->PrintMessage("Action: Select shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_SELECT);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_SELECT);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case MOVE:
 			pOut->PrintMessage("Action: MOVE shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_MOVE);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_MOVE);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case DEL:
 			pOut->PrintMessage("Action: Delete shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_DEL);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_DEL);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case RESIZE:
 			pOut->PrintMessage("Action: Resize shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_RESIZE);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_RESIZE);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case ROTATE:
 			pOut->PrintMessage("Action: Rotate a shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_ROTATE);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_ROTATE);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case SEND_BACK:
 			pOut->PrintMessage("Action: send back shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_SEND_BACK);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_SEND_BACK);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case BRNG_FRNT:
 			pOut->PrintMessage("Action: bring forward shape, click anywhere");
-			pOut->CreateDrawToolBar(ITM_BRNG_FRNT);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_BRNG_FRNT);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case SAVE:
 			pOut->PrintMessage("Action: Saving data...");
-			pOut->CreateDrawToolBar(ITM_SAVE);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_SAVE);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case LOAD:
 			pOut->PrintMessage("Action: Loading data...");
-			pOut->CreateDrawToolBar(ITM_LOAD);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_LOAD);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case REDO:
 			pOut->PrintMessage("Action: redo previous action...");
-			pOut->CreateDrawToolBar(ITM_REDO);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_REDO);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case UNDO:
 			pOut->PrintMessage("Action: undo previous action");
-			pOut->CreateDrawToolBar(ITM_UNDO);
+			if (ActType != PrevActType)
+			{
+				pOut->CreateDrawToolBar(ITM_UNDO);
+				PrevActType = ActType;
+			}
+			else
+			{
+				pOut->CreateDrawToolBar();
+				PrevActType = EMPTY;
+			}
 			break;
 
 		case STATUS:
